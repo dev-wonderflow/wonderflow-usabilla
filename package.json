@@ -1,5 +1,5 @@
 {
-  "name": "@bitliner/usabilla-api",
+  "name": "wonderflow-usabilla",
   "version": "1.5.0",
   "description": "Unofficial Usabilla API client for node.js applications",
   "main": "index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.wonderflow.ai/dev/platform/usabilla.git"
+    "url": "https://github.com/dev-wonderflow/wonderflow-usabilla"
   },
   "author": "giuseppe.raveduto@wonderflow.ai; vanes@wonderflow.ai",
   "license": "MIT",
