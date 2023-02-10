@@ -1,0 +1,32 @@
+{
+  "name": "@bitliner/usabilla-api",
+  "version": "1.5.0",
+  "description": "Unofficial Usabilla API client for node.js applications",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18.12.1",
+    "npm": ">=9.2.0"
+  },
+  "scripts": {
+    "test": "c8 ava --verbose -s",
+    "release": "semantic-release --ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.wonderflow.ai/dev/platform/usabilla.git"
+  },
+  "author": "giuseppe.raveduto@wonderflow.ai; vanes@wonderflow.ai",
+  "license": "MIT",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.2",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/gitlab": "^10.1.4",
+    "@semantic-release/npm": "^9.0.2",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "ava": "^5.2.0",
+    "c8": "^7.12.0",
+    "semantic-release": "^20.1.0",
+    "sinon": "^15.0.1"
+  }
+}

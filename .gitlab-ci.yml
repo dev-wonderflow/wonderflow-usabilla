@@ -1,0 +1,56 @@
+image: node:hydrogen
+
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm/
+
+before_script:
+  - npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+  - npm ci --cache .npm --prefer-offline
+
+stages:
+  - lint
+  - test
+  - release
+
+lint:
+  stage: lint
+  only:
+    - pushes
+    - merge_requests
+  variables:
+    GIT_DEPTH: 0
+  script:
+    - npx standard
+  interruptible: true
+
+unit_tests:
+  stage: test
+  needs: []
+  only:
+    - pushes
+    - merge_requests
+  script:
+    - npm run test
+  artifacts:
+    when: always
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  interruptible: true
+
+release:
+  stage: release
+  only:
+    - main
+  except:
+    - tags
+  variables:
+    GITLAB_TOKEN: $SEMANTIC_RELEASE_TOKEN
+  script:
+    - npm run release
