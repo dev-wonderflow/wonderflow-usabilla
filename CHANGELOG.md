@@ -1,3 +1,10 @@
+# [1.6.0](https://gitlab.wonderflow.ai/dev/platform/usabilla/compare/v1.5.0...v1.6.0) (2023-02-13)
+
+
+### Features
+
+* **usabilla-api:** force ipv4 resolution ([7296cb2](https://gitlab.wonderflow.ai/dev/platform/usabilla/commit/7296cb20cfc4d98054e780df46f975d539775645))
+
 # [1.5.0](https://gitlab.wonderflow.ai/dev/platform/usabilla/compare/v1.4.0...v1.5.0) (2023-02-07)
 
 
