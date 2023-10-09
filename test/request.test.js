@@ -1,4 +1,6 @@
 const test = require('ava')
+const sinon = require('sinon')
+
 const request = require('../lib/request')
 
 const options = {
@@ -20,4 +22,24 @@ test('request throws an error with a message when it fails', async t => {
   await t.throwsAsync(async () => {
     await request.get('', {})
   }, { instanceOf: Error, message: 'Error: unknown scheme' })
+})
+
+test('request throws when fetch returns an error', async t => {
+  const fetchStub = sinon.stub(global, 'fetch').resolves(
+    new global.Response(JSON.stringify({
+      error: {
+        type: 'Sender',
+        code: 'TooManyRequests',
+        message: 'Request limit reached, please contact your Usabilla account manager.',
+        status: 429
+      }
+    }), {
+      status: 429,
+      statusText: 'Too Many Requests'
+    }))
+
+  const err = await t.throwsAsync(() => request.get('button', options))
+  t.is(err.message, 'Error while performing the request: statusCode 429 - Request limit reached, please contact your Usabilla account manager.')
+
+  fetchStub.restore()
 })
